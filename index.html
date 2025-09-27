@@ -6,28 +6,66 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 100px;
-      background-color: #f4f4f9;
-      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      background: #f4f4f9;
     }
     h1 {
       color: #007acc;
     }
-    #loading {
-      font-size: 18px;
-      color: gray;
+    #chat {
+      width: 400px;
+      height: 300px;
+      border: 1px solid #ccc;
+      background: #fff;
+      overflow-y: auto;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    #input {
+      display: flex;
+      width: 400px;
+    }
+    #message {
+      flex: 1;
+      padding: 5px;
+    }
+    button {
+      padding: 5px 10px;
+      background: #007acc;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #005fa3;
     }
   </style>
 </head>
 <body>
-  <h1>Привет! 👋</h1>
-  <p id="loading">Сайт загружается...</p>
+  <h1>Мини-чат 💬</h1>
+  <div id="chat"></div>
+  <div id="input">
+    <input type="text" id="message" placeholder="Введите сообщение...">
+    <button onclick="sendMessage()">Отправить</button>
+  </div>
 
   <script>
-    setTimeout(() => {
-      document.getElementById("loading").textContent = "Это мой первый чат на GitHub Pages!";
-    }, 2000); // через 2 секунды меняем текст
+    function sendMessage() {
+      const chat = document.getElementById("chat");
+      const input = document.getElementById("message");
+      if (input.value.trim() !== "") {
+        const msg = document.createElement("p");
+        msg.textContent = input.value;
+        chat.appendChild(msg);
+        input.value = "";
+        chat.scrollTop = chat.scrollHeight; // прокрутка вниз
+      }
+    }
   </script>
 </body>
 </html>
