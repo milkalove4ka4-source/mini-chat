@@ -3,9 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>Мини-чат</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+    h1 {
+      color: #007acc;
+    }
+    #loading {
+      font-size: 18px;
+      color: gray;
+    }
+  </style>
 </head>
 <body>
   <h1>Привет! 👋</h1>
-  <p>Это мой первый чат на GitHub Pages!</p>
+  <p id="loading">Сайт загружается...</p>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById("loading").textContent = "Это мой первый чат на GitHub Pages!";
+    }, 2000); // через 2 секунды меняем текст
+  </script>
 </body>
 </html>
